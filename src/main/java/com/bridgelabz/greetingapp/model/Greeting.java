@@ -8,18 +8,18 @@ import javax.persistence.Id;
 public class Greeting {
    @Id
    @GeneratedValue
-    private Long id;
+    private int id;
     private String message;
 
-    public Greeting(Long id, String message) {
+    public Greeting(int id, String message) {
         this.id = id;
         this.message = message;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     @Id
-    public Long getId() {
+    public int getId() {
         return id;
     }
     public String getMessage() {

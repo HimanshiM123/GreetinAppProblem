@@ -13,10 +13,10 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 @Autowired
-    private IGreetingservice greetingService;
+     IGreetingservice greetingService;
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "world") String name){
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        return new Greeting((int)counter.incrementAndGet(), String.format(template, name));
     }
     @RequestMapping(value = ("/hello"), method = RequestMethod.GET)
     public String hello(){
@@ -27,20 +27,5 @@ public class GreetingController {
     public String get(@RequestBody Greeting greeting){
         String getGreeting = greetingService.getGreeting(greeting);
         return getGreeting;
-    }
-    @GetMapping("/getMessage/{getId}")
-    public Greeting getMessage(@PathVariable long getId){
-        Greeting greeting = greetingService.greetingMessage(getId);
-        return greeting;
-    }
-    @GetMapping("getGreeting")
-    public List<Greeting> getMessage(){
-        List<Greeting> greeting = greetingService.getGreeting();
-        return greeting;
-    }
-    @PutMapping("/updateUser/{getId}")
-    public Greeting updateUser(@PathVariable long getId, @RequestBody Greeting greeting){
-        Greeting message = greetingService.updateUserMessage(getId, greeting);
-        return message;
     }
 }
