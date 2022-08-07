@@ -30,4 +30,12 @@ public class Greeting {
     }
     public Greeting() {
     }
+
+    @Override
+    public String toString() {
+        return "Greeting{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }
