@@ -8,29 +8,31 @@ import javax.persistence.Id;
 public class Greeting {
    @Id
    @GeneratedValue
-    private int id;
+    private long id;
     private String message;
 
-    public Greeting(int id, String message) {
+    public Greeting(long id, String message) {
         this.id = id;
         this.message = message;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     @Id
-    public int getId() {
+    public long getId() {
+
         return id;
     }
     public String getMessage() {
+
         return message;
     }
     public void setMessage(String message) {
+
         this.message = message;
     }
     public Greeting() {
     }
-
     @Override
     public String toString() {
         return "Greeting{" +
