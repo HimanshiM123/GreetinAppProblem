@@ -22,14 +22,9 @@ public class GreetingService implements IGreetingService {
         return "Hello World";
     }
     @Override
-    public String getGreeting(Greeting greeting) {
-        repository.save(greeting);
-        return greeting.toString();
-    }
-
-    @Override
     public Greeting greetingMessage(long getId) {
-        return null;
+        Optional<Greeting> greeting = repository.findById(getId);
+        return greeting.get();
     }
 
     @Override
@@ -42,5 +37,10 @@ public class GreetingService implements IGreetingService {
     public Greeting addGreeting(User user) {
        String message = String.format(template, (user.toString().isEmpty())? "Hello World" : user.toString());
        return repository.save(new Greeting(counter.incrementAndGet(), message));
+    }
+    @Override
+    public String getGreeting(Greeting greeting) {
+        repository.save(greeting);
+        return greeting.toString();
     }
 }
