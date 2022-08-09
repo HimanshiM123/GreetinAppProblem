@@ -14,4 +14,5 @@ public interface IGreetingService {
 
     Greeting addGreeting(User user);
     Greeting updateUserMessage(long getId, Greeting greeting);
+    void deleteMessage(long id);
 }

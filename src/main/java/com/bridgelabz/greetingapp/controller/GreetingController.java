@@ -47,4 +47,9 @@ private IGreetingService greetingService;
         Greeting message = greetingService.updateUserMessage(getId,greeting);
         return message;
     }
+    @DeleteMapping("/delete")
+    public String deleteMessage(@RequestParam long id){
+        greetingService.deleteMessage(id);
+        return "Deleted....!";
+    }
 }
