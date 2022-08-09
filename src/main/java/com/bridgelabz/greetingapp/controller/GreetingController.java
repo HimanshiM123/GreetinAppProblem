@@ -30,4 +30,10 @@ private IGreetingService greetingService;
         String getGreeting = greetingService.getGreeting(greeting);
         return getGreeting;
     }
+    @GetMapping("/getMessage/{getId}")
+    public Greeting getMessage(@PathVariable long getId)
+    {
+        Greeting greeting = greetingService.greetingMessage(getId);
+        return greeting;
+    }
 }

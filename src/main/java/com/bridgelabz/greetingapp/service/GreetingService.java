@@ -22,17 +22,10 @@ public class GreetingService implements IGreetingService {
         return "Hello World";
     }
     @Override
-    public Greeting greetingMessage(long getId) {
-        Optional<Greeting> greeting = repository.findById(getId);
-        return greeting.get();
-    }
-
-    @Override
     public List<Greeting> getGreetings() {
         List<Greeting> greetings = repository.findAll();
         return greetings;
     }
-
     @Override
     public Greeting addGreeting(User user) {
        String message = String.format(template, (user.toString().isEmpty())? "Hello World" : user.toString());
@@ -43,4 +36,10 @@ public class GreetingService implements IGreetingService {
         repository.save(greeting);
         return greeting.toString();
     }
+    @Override
+    public Greeting greetingMessage(long getId) {
+        Optional<Greeting> greeting = repository.findById(getId);
+        return greeting.get();
+    }
+
 }
