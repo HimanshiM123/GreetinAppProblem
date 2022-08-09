@@ -18,13 +18,7 @@ public class GreetingService implements IGreetingService {
     IGreetingRepository repository;
     @Override
     public String getMessage() {
-
         return "Hello World";
-    }
-    @Override
-    public List<Greeting> getGreetings() {
-        List<Greeting> greetings = repository.findAll();
-        return greetings;
     }
     @Override
     public Greeting addGreeting(User user) {
@@ -41,5 +35,9 @@ public class GreetingService implements IGreetingService {
         Optional<Greeting> greeting = repository.findById(getId);
         return greeting.get();
     }
-
+    @Override
+    public List<Greeting> getGreetings() {
+        List<Greeting> greetings = repository.findAll();
+        return greetings;
+    }
 }
