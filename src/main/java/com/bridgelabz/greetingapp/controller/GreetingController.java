@@ -42,4 +42,9 @@ private IGreetingService greetingService;
         List<Greeting> greeting = greetingService.getGreetings();
         return greeting;
     }
+    @PutMapping("/updateUser/{getId}")
+    public Greeting updateUser(@PathVariable long getId,@RequestBody Greeting  greeting){
+        Greeting message = greetingService.updateUserMessage(getId,greeting);
+        return message;
+    }
 }

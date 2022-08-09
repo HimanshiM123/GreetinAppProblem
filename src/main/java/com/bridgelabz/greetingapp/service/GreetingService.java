@@ -40,4 +40,15 @@ public class GreetingService implements IGreetingService {
         List<Greeting> greetings = repository.findAll();
         return greetings;
     }
+    @Override
+    public Greeting updateUserMessage(long getId, Greeting greeting) {
+        Optional<Greeting> newGreeting = repository.findById(getId);
+        if (newGreeting.isPresent()) {
+            newGreeting.get().setMessage(greeting.getMessage());
+            repository.save(newGreeting.get());
+            return newGreeting.get();
+        } else {
+            return null;
+        }
+    }
 }
